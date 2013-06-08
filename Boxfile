@@ -47,3 +47,8 @@ web1:
    - "echo ' locale: en' >> app/config/parameters.yml"
    - "echo ' secret: [secret]' >> app/config/parameters.yml"
    - "php bin/composer.phar install"
+
+   before_deploy:
+       - "php app/console doctrine:schema:update --force"
+
+
