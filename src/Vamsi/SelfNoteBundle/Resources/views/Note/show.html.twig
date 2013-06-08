@@ -1,0 +1,48 @@
+{% extends '::base.html.twig' %}
+{% block title %}{{ entity.name }}{% endblock title %}
+{% block body -%}
+
+<nav class="top-bar">
+    <ul class="title-area">
+        <li class="name">
+            <h1><a href="{{ path('vamsi_self_note_homepage') }}">SelfNote</a></h1>
+        </li>
+        <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
+        <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
+    </ul>
+
+    <section class="top-bar-section">
+        <!-- Left Nav Section -->
+        <ul class="left">
+            <li class="divider"></li>
+        </ul>
+
+    </section>
+</nav>
+<br />
+<div class="row">
+    <div class="large-8 columns">
+
+
+        <h4>{{ entity.name }}</h4>
+
+    {{ entity.description }}
+    <br />
+        <br />
+        <br />
+        <h6><a href="{{ path('lists_show', { 'id': entity.lists.id }) }}">Back to {{ entity.lists.name }} List</a></h6>
+        <br />
+        <br />
+        <a href="{{ path('note_edit', { 'id': entity.id }) }}">
+            Edit
+        </a>
+        <br />
+        <br />
+
+        <form action="{{ path('note_delete', { 'id': entity.id }) }}" method="post">
+            <input type="hidden" name="_method" value="DELETE" />
+            {{ form_widget(delete_form) }}
+            <button type="submit">Delete</button>
+        </form>
+
+{% endblock %}

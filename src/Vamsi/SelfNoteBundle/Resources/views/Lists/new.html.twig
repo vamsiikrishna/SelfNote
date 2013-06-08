@@ -1,0 +1,37 @@
+{% extends '::base.html.twig' %}
+{% block title %}New List{% endblock title %}
+{% block body -%}
+
+<nav class="top-bar">
+    <ul class="title-area">
+        <li class="name">
+            <h1><a href="{{ path('vamsi_self_note_homepage') }}">SelfNote</a></h1>
+        </li>
+        <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
+        <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
+    </ul>
+
+    <section class="top-bar-section">
+        <!-- Left Nav Section -->
+        <ul class="left">
+            <li class="divider"></li>
+        </ul>
+
+    </section>
+</nav>
+<br />
+<div class="row">
+    <div class="large-8 columns">
+
+
+    <form action="{{ path('lists_create') }}" method="post" {{ form_enctype(form) }}>
+        {{ form_widget(form) }}
+        <p>
+            <button type="submit" class="button">Create</button>
+        </p>
+    </form>
+        <a href="{{ path('vamsi_self_note_homepage') }}">
+            Back to the list
+        </a>
+
+{% endblock %}

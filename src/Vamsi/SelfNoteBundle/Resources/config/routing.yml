@@ -1,0 +1,13 @@
+vamsi_self_note_homepage:
+    pattern:  /
+    defaults: { _controller: VamsiSelfNoteBundle:Default:index }
+
+VamsiSelfNoteBundle_lists:
+    resource: "@VamsiSelfNoteBundle/Resources/config/routing/lists.yml"
+    prefix:   /lists
+
+VamsiSelfNoteBundle_note:
+    resource: "@VamsiSelfNoteBundle/Resources/config/routing/note.yml"
+    prefix:   /note
+
+

@@ -1,0 +1,62 @@
+{% extends "::base.html.twig" %}
+{% block title %}SelfNote
+{% endblock title %}
+{% block body %}
+    <nav class="top-bar">
+        <ul class="title-area">
+            <li class="name">
+                <h1><a href="#">SelfNote</a></h1>
+            </li>
+            <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
+            <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
+        </ul>
+        <section class="top-bar-section">
+            <!-- Left Nav Section -->
+            <ul class="left">
+                <li class="divider"></li>
+            </ul>
+
+            <!-- Right Nav Section -->
+            <ul class="right">
+                <li class="divider hide-for-small"></li>
+                <li class="has-dropdown"><a href="#">Lists</a>
+
+                    <ul class="dropdown">
+                        <li><label>Your Lists</label></li>
+
+    {% if entities %}
+        {% for entity in entities %}
+            <li><a href="{{ path('lists_show', { 'id': entity.id }) }}">{{ entity.name }}</a></li>
+        {% endfor %}
+    {% endif %}
+                    </ul>
+                </li>
+                <li class="divider"></li>
+            </ul>
+        </section>
+    </nav>
+    <br />
+    <div class="row">
+    <div class="large-8 columns">
+
+        <a href="{{ path('note_new') }}" class="button radius medium success">New Note</a>
+        <a href="{{ path('lists_new') }}" class="button radius medium">New List</a>
+
+    {% if entities %}
+        <ul class="no-bullet">
+        {% for entity in entities %}
+             <li><h4><a href="{{ path('lists_show', { 'id': entity.id }) }}">{{ entity.name }}</a></h4></li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <br />
+
+        No Lists
+        <br />
+        <br />
+
+    {% endif %}
+    </div>
+    </div>
+
+{% endblock body %}

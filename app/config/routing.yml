@@ -1,0 +1,4 @@
+vamsi_self_note:
+    resource: "@VamsiSelfNoteBundle/Resources/config/routing.yml"
+    prefix:   /
+

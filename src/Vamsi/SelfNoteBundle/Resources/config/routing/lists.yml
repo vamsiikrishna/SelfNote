@@ -1,0 +1,30 @@
+lists:
+    pattern:  /
+    defaults: { _controller: "VamsiSelfNoteBundle:Lists:index" }
+
+lists_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "VamsiSelfNoteBundle:Lists:show" }
+
+lists_new:
+    pattern:  /new
+    defaults: { _controller: "VamsiSelfNoteBundle:Lists:new" }
+
+lists_create:
+    pattern:  /create
+    defaults: { _controller: "VamsiSelfNoteBundle:Lists:create" }
+    requirements: { _method: post }
+
+lists_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "VamsiSelfNoteBundle:Lists:edit" }
+
+lists_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "VamsiSelfNoteBundle:Lists:update" }
+    requirements: { _method: post|put }
+
+lists_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "VamsiSelfNoteBundle:Lists:delete" }
+    requirements: { _method: post|delete }

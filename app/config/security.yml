@@ -1,0 +1,33 @@
+jms_security_extra:
+    secure_all_services: false
+    expressions: true
+
+security:
+    encoders:
+        Symfony\Component\Security\Core\User\User:
+            algorithm:   sha1
+            iterations: 1
+            encode_as_base64: false
+
+
+    role_hierarchy:
+        ROLE_ADMIN:       ROLE_USER
+
+    providers:
+        in_memory:
+            memory:
+                users:
+                    user:  { password: 5baa61e4c9b93f3f0682250b6cf8331b7ee68fd8, roles: [ 'ROLE_USER' ] }
+    firewalls:
+        dev:
+            pattern:  ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+
+
+        secured_area:
+            pattern:    ^/
+            http_basic:
+                realm: "Secured Demo Area"
+
+    access_control:
+        #- { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY, requires_channel: https }
